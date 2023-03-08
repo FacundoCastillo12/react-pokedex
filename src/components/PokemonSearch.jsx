@@ -7,7 +7,6 @@ import ButtonLink from './ButtonLink';
 const PokemonSearch = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const { data, error, loading } = useFetchTimeoutGetPokemon(pokeApi.getPokemonById, searchTerm, 1000);
-  console.log(data);
   function handleSubmit(e) {
     e.preventDefault();
   }
@@ -46,13 +45,13 @@ const PokemonSearch = () => {
                   <ul className="list-group list-group-flush ">
                   <h5 className="card-title text-primary">ID: {data.id}</h5>
                       <li className="list-group-item bg-warning text-dark">
-                        <strong className="text-info">EXP Base:</strong> {data.base_experience}
+                        <strong className="text-dark">EXP Base:</strong> {data.base_experience}
                       </li>
                       <li className="list-group-item bg-warning text-dark">
-                        <strong className="text-info">Height:</strong> {data.height}
+                        <strong className="text-dark">Height:</strong> {data.height}
                       </li>
                       <li className="list-group-item bg-warning text-dark">
-                        <strong className="text-info">Weight: </strong> {data.weight}
+                        <strong className="text-dark">Weight: </strong> {data.weight}
                       </li>
                   </ul>
                   <div className='mt-4'>

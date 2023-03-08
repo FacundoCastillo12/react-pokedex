@@ -3,6 +3,7 @@ import Card from './Card';
 import pokeApi from '../pokeApi';
 import { useFetchGetPokemon } from '../hooks/useSimpleFetch';
 import Loading from './Loading';
+import { Alert } from 'react-bootstrap';
 
 function useHandbleLoadPokemon(initialCount) {
   const [count, setCount] = useState(initialCount);
@@ -24,7 +25,7 @@ const Pokedex = () => {
 
   if (loading) return <Loading />;
 
-  if (error) return 'Something went wrong';
+  if (error) return <Alert key={'danger'} variant={'danger'} className="mt-4 text-center" >Something went wrong</Alert>;
 
   if (data)
     return (

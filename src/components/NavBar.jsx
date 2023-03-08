@@ -5,7 +5,7 @@ export default function NavBar() {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <Link to={`/`} className="navbar-brand" >Pokedex</Link>
+      <Link to={`/`} className="navbar-brand ml-3" >Pokedex</Link>
         <button
           className="navbar-toggler"
           type="button"
