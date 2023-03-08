@@ -9,7 +9,7 @@ import Loading from './Loading';
 
 
 const SideBar = () => {
-  const { data, loading, error } = useFetchGetPokemonById(pokeApi.getPokemonLimitPokemon, 20);
+  const { data, loading, error } = useFetchGetPokemonById(pokeApi.getPokemonLimitPokemon, 50);
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);

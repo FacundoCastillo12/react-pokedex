@@ -1,17 +1,8 @@
 import React, { useState } from 'react';
 import Card from './Card';
 import pokeApi from '../pokeApi';
-import { useFetchGetPokemon } from '../hooks/useFetchWithCache';
+import { useFetchGetPokemon } from '../hooks/useSimpleFetch';
 import Loading from './Loading';
-
-// Objetivo. Quiero crear la api, que reciba por id. Que cargue los veite primeros y luego que cargue de tanto a tanto.
-// Quiero crear un componente para pasar los datos de cuando vaya a un id, basicamente un Pokemon individual. Mostrar un panel bonito
-// con todos los detalles.
-// Segundo. Configurar el useFechReducer, configurarlo para funcione tanto como individual como con cada uno.
-// Por ejemplo, un fech que de todo, basicamente. Un fech que pedir los primeros veinte y luego pedir individualmente a cada uno.
-// Luego añadir tambien el buscador. En barra superior como asi tambien, en una parte en solitario.
-// Basicamente el useHook sera completo. Para pedir individual como para todos.
-// Crear o buscar un cargador automatico, tal vez una pokeball de carga. Tanto para el inicio como para en cada momento. Incluso cuando esta buscando.
 
 function useHandbleLoadPokemon(initialCount) {
   const [count, setCount] = useState(initialCount);

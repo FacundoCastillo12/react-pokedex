@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, BrowserRouter, Routes, Route } from 'react-router-dom';
 import NavBar from './NavBar';
 import Pokedex from './PokeDex';
 import PokemonSearch from './PokemonSearch';
@@ -20,7 +20,8 @@ function App() {
   return (
     <div className="app">
       <CacheProvider>
-      <BrowserRouter>
+      <HashRouter>
+
         <NavBar />
         <Wrapper>
           <Routes>
@@ -30,7 +31,8 @@ function App() {
           </Routes>
         </Wrapper>
         <Footer />
-      </BrowserRouter>
+
+      </HashRouter>
       </CacheProvider>
     </div>
   );
