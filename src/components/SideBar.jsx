@@ -48,19 +48,4 @@ const SideBar = () => {
 };
 
 export default SideBar;
-/*
-            {/* {pokemons.map((pokemon, index) => (
-            <li className="list-group-item" key={index}>
-              {pokemon.name} - {index + 1}
-            </li>
-          ))} } */
 
-/*
-                    {data?.results?.map((pokemon) => (
-              <ListGroup.Item key={pokemon}>
-                <Link to={`/pokemon/${1}`} onClick={handleClose}>
-                  {pokemon.name}
-                </Link>
-              </ListGroup.Item>
-            ))}
-          */

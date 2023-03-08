@@ -1,13 +1,11 @@
-import { Link } from "react-router-dom";
-import SideBar from "./SideBar";
+import { Link } from 'react-router-dom';
+import SideBar from './SideBar';
 
 export default function NavBar() {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a className="navbar-brand" href="/">
-          Pokedex
-        </a>
+      <Link to={`/`} className="navbar-brand" >Pokedex</Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -22,19 +20,17 @@ export default function NavBar() {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
-            <li className="nav-item active">
-              <a className="nav-link" href="/">
+            <li className="nav-item active mr-2">
+              <Link className="nav-link" to={`/`}>
                 Home <span className="sr-only">(current)</span>
-              </a>
+              </Link>
             </li>
             <li className="nav-item active">
-              <a className="nav-link" href="#/search">
-              Search Pokemon 
-              </a>
+              <Link className="nav-link" to={`/search`}>Search Pokemon</Link>
             </li>
           </ul>
           <div className="form-inline my-2 my-lg-0">
-          <SideBar />
+            <SideBar />
           </div>
         </div>
       </nav>

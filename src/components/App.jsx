@@ -21,7 +21,6 @@ function App() {
     <div className="app">
       <CacheProvider>
       <HashRouter>
-
         <NavBar />
         <Wrapper>
           <Routes>
@@ -31,7 +30,6 @@ function App() {
           </Routes>
         </Wrapper>
         <Footer />
-
       </HashRouter>
       </CacheProvider>
     </div>
