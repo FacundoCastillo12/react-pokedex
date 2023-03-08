@@ -5,7 +5,9 @@ export default function NavBar() {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <Link to={`/`} className="navbar-brand ml-3" >Pokedex</Link>
+        <Link to={`/`} className="navbar-brand ml-3">
+          Pokedex
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -26,7 +28,9 @@ export default function NavBar() {
               </Link>
             </li>
             <li className="nav-item active">
-              <Link className="nav-link" to={`/search`}>Search Pokemon</Link>
+              <Link className="nav-link" to={`/search`}>
+                Search Pokemon
+              </Link>
             </li>
           </ul>
           <div className="form-inline my-2 my-lg-0">

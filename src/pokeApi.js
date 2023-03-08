@@ -14,8 +14,6 @@ const pokeApi = {
   getPokemonOffsetLimit: (limit) => getResource(`${BASE_URL}/pokemon?limit=20&offset=${limit}`),
   getPokemonLimitPokemon: (number) => getResource(`${BASE_URL}/pokemon?limit=${number}`),
   getPokemonUrl: (url) => getResource(`${url}`),
-  searchPokemon: (searchTerm) =>
-    getResource(`${BASE_URL}/pokemon/${encodeURIComponent(searchTerm)}`),
 };
 
 export default pokeApi;

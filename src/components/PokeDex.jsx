@@ -25,7 +25,12 @@ const Pokedex = () => {
 
   if (loading) return <Loading />;
 
-  if (error) return <Alert key={'danger'} variant={'danger'} className="mt-4 text-center" >Something went wrong</Alert>;
+  if (error)
+    return (
+      <Alert key={'danger'} variant={'danger'} className="mt-4 text-center">
+        Something went wrong
+      </Alert>
+    );
 
   if (data)
     return (
@@ -63,51 +68,3 @@ const Pokedex = () => {
 };
 
 export default Pokedex;
-/*
-    useEffect(() => {
-      const fetchPokemonList = async () => {
-        const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=20");
-        const data = await response.json();
-        const pokemonData = await Promise.all(
-          data.results.map(async (result) => {
-            const response = await fetch(result.url);
-            const data = await response.json();
-            return data;
-          })
-        );
-        setPokemonList(pokemonData);
-        setLoading(false); // Actualizar estado
-      };
-      fetchPokemonList();
-    }, []);
-  
-    const loadMorePokemon = async () => {
-      const response = await fetch(
-        `https://pokeapi.co/api/v2/pokemon?limit=20&offset=${pokemonList.length}`
-      );
-      const data = await response.json();
-      const pokemonData = await Promise.all(
-        data.results.map(async (result) => {
-          const response = await fetch(result.url);
-          const data = await response.json();
-          return data;
-        })
-      );
-      setPokemonList([...pokemonList, ...pokemonData]);
-    };
-    ----Vuelve a cargar todo de vuelta incluyendo lso viejos:
-      const [pokemonList, setPokemonList] = useState([]);
-  const [count, setCount] = useState(20);
-  const { data, error, loading } = useFetchGetTwentyPokemon(pokeApi.getPokemonLimitPokemon, pokeApi.getPokemonUrl, count);
-
-  useEffect(() => {
-    if (data) {
-      setPokemonList(prevList => [...prevList, ...data]);
-    }
-  }, [data]);
-
-  const handleLoadMore = () => {
-    setCount(prevCount => prevCount + 20);
-  };
-
-*/

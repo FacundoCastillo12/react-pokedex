@@ -17,7 +17,12 @@ const Pokemon = () => {
 
   if (loading && pokemonLoading) return <Loading />;
 
-  if (error && pokemonError) return <Alert key={'danger'} variant={'danger'} className="mt-4 text-center" >Something went wrong</Alert>;
+  if (error && pokemonError)
+    return (
+      <Alert key={'danger'} variant={'danger'} className="mt-4 text-center">
+        Something went wrong
+      </Alert>
+    );
 
   if (data && pokemonSpecies) {
     const englishFlavorTexts = pokemonSpecies.flavor_text_entries.filter((entry) => entry.language.name === 'en');
@@ -40,11 +45,7 @@ const Pokemon = () => {
                   ID: <strong>{data.id}</strong>{' '}
                 </h5>
                 <p className="card-text ">
-                  {randomEnglishFlavorText === null ? (
-                     `Unknown`
-                  ) : (
-                    `${randomEnglishFlavorText.flavor_text}`
-                  )}
+                  {randomEnglishFlavorText === null ? `Unknown` : `${randomEnglishFlavorText.flavor_text}`}
                 </p>
               </div>
               <div className="container text-center text-capitalize">
@@ -140,8 +141,8 @@ const Pokemon = () => {
                         )}
                       </li>
                       <li className="list-group-item bg-dark text-success">
-                      <strong className="text-info"> Shape:</strong>
-                      {pokemonSpecies.shape === null ? (
+                        <strong className="text-info"> Shape:</strong>
+                        {pokemonSpecies.shape === null ? (
                           <div className="text-success">Unknown</div>
                         ) : (
                           <div className="text-success">{pokemonSpecies.shape.name}</div>

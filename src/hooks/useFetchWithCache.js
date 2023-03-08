@@ -45,13 +45,13 @@ export const useFetchTimeoutGetPokemon = (fetchResource, param, timeout) => {
 };
 
 export function useFetchGetPokemonById(fetchResource, param) {
-    const cache = useContext(CacheContext);
+  const cache = useContext(CacheContext);
   const [state, dispatch] = useReducer(fetchReducer, initialState);
   useEffect(() => {
     if (cache.state[param]) {
-        dispatch({ type: 'SUCCESS', payload: cache.state[param] });
-        return;
-      }
+      dispatch({ type: 'SUCCESS', payload: cache.state[param] });
+      return;
+    }
     const fetch = async () => {
       dispatch({ type: 'LOAD' });
       try {
@@ -69,15 +69,15 @@ export function useFetchGetPokemonById(fetchResource, param) {
 }
 
 export function useFetchGetPokemon(fetchResource, fetchByUrl, param) {
-    const cache = useContext(CacheContext);
+  const cache = useContext(CacheContext);
   const [state, dispatch] = useReducer(fetchReducer, initialState);
 
   useEffect(() => {
     if (cache.state[param]) {
-        dispatch({ type: 'SUCCESS', payload: cache.state[param] });
-        return;
-      }
-  
+      dispatch({ type: 'SUCCESS', payload: cache.state[param] });
+      return;
+    }
+
     const fetch = async () => {
       dispatch({ type: 'LOAD' });
       try {
