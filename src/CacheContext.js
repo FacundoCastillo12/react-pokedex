@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, createContext } from 'react';
+import { useEffect, useReducer, createContext } from 'react';
 
 export const CacheContext = createContext();
 CacheContext.displayName = 'Cache';
@@ -17,7 +17,10 @@ const cacheReducer = (state, action) => {
 };
 
 export function CacheProvider({ children }) {
-  const [state, dispatch] = useReducer(cacheReducer, JSON.parse(localStorage.getItem('POKEMON_CACHE')) || {});
+  const [state, dispatch] = useReducer(
+    cacheReducer,
+    JSON.parse(localStorage.getItem('POKEMON_CACHE')) || {},
+  );
 
   useEffect(() => {
     const serializedState = JSON.stringify(state);

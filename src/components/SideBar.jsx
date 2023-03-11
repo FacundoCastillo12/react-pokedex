@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import ListGroup from 'react-bootstrap/ListGroup';
+import { Link } from 'react-router-dom';
 import { useFetchGetPokemonById } from '../hooks/useSimpleFetch';
 import pokeApi from '../pokeApi';
-import { Link } from 'react-router-dom';
 import Loading from './Loading';
 
-
-const SideBar = () => {
+function SideBar() {
   const { data, loading, error } = useFetchGetPokemonById(pokeApi.getPokemonLimitPokemon, 50);
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const id = 1;
   return (
     <div className="mr-4">
       <Button variant="outline-warning" onClick={handleShow}>
@@ -28,7 +28,7 @@ const SideBar = () => {
           <ListGroup defaultActiveKey="#link1" className="text-capitalize">
             {loading && <Loading />}
             {data?.results?.map((pokemon, index) => (
-              <ListGroup.Item key={index}>
+              <ListGroup.Item key={`${id}-${pokemon.name}`}>
                 <Link to={`/pokemon/${index + 1}`} onClick={handleClose}>
                   {pokemon.name}
                 </Link>
@@ -41,11 +41,9 @@ const SideBar = () => {
             )}
           </ListGroup>
         </Offcanvas.Body>
-        
       </Offcanvas>
     </div>
   );
-};
+}
 
 export default SideBar;
-

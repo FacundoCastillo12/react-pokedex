@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { Alert } from 'react-bootstrap';
 import Card from './Card';
 import pokeApi from '../pokeApi';
 import { useFetchGetPokemon } from '../hooks/useSimpleFetch';
 import Loading from './Loading';
-import { Alert } from 'react-bootstrap';
 
 function useHandbleLoadPokemon(initialCount) {
   const [count, setCount] = useState(initialCount);
@@ -16,32 +16,42 @@ function useHandbleLoadPokemon(initialCount) {
     setCount((prevCount) => prevCount + 20);
     setPage((prevPage) => prevPage + 1);
   };
-  return { count, page, handleLoadPrevious, handleLoadNext };
+  return {
+    count,
+    page,
+    handleLoadPrevious,
+    handleLoadNext
+  };
 }
 
-const Pokedex = () => {
+function Pokedex() {
   const { count, page, handleLoadPrevious, handleLoadNext } = useHandbleLoadPokemon(0);
-  const { data, error, loading } = useFetchGetPokemon(pokeApi.getPokemonOffsetLimit, pokeApi.getPokemonUrl, count);
+  const { data, error, loading } = useFetchGetPokemon(
+    pokeApi.getPokemonOffsetLimit,
+    pokeApi.getPokemonUrl,
+    count
+  );
 
   if (loading) return <Loading />;
 
-  if (error)
+  if (error) {
     return (
-      <Alert key={'danger'} variant={'danger'} className="mt-4 text-center">
+      <Alert key="danger" variant="danger" className="mt-4 text-center">
         Something went wrong
       </Alert>
     );
+  }
 
-  if (data)
+  if (data) {
     return (
       <div className="container">
         {!loading && (
           <div className="d-flex justify-content-center mt-3">
-            <button className="btn btn-primary" onClick={handleLoadPrevious}>
+            <button type="button" className="btn btn-primary" onClick={handleLoadPrevious}>
               Previous
             </button>
             <strong className="btn btn-info">{page}</strong>
-            <button className="btn btn-primary" onClick={handleLoadNext}>
+            <button type="button" className="btn btn-primary" onClick={handleLoadNext}>
               Next
             </button>
           </div>
@@ -54,17 +64,18 @@ const Pokedex = () => {
         </div>
         {!loading && (
           <div className="d-flex justify-content-center">
-            <button className="btn btn-primary" onClick={handleLoadPrevious}>
+            <button type="button" className="btn btn-primary" onClick={handleLoadPrevious}>
               Previous
             </button>
             <strong className="btn btn-info">{page}</strong>
-            <button className="btn btn-primary" onClick={handleLoadNext}>
+            <button type="button" className="btn btn-primary" onClick={handleLoadNext}>
               Next
             </button>
           </div>
         )}
       </div>
     );
-};
+  }
+}
 
 export default Pokedex;

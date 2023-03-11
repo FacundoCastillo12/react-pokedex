@@ -1,4 +1,5 @@
 import styled from '@emotion/styled/macro';
+import PropTypes from 'prop-types';
 import ButtonLink from './ButtonLink';
 import cardImg from '../assents/img/card.png';
 
@@ -53,41 +54,65 @@ const CardContainer = styled.div`
   }
 `;
 
-const Card = (props) => {
+function Card({ pokemon }) {
+  const { name, sprites, id, base_experience: baseExperience, height, weight, types } = pokemon;
   return (
     <div className="col-md-3 mt-4">
-      <CardComplete className={'card-group'}>
-        <CardContainer className={'card'}>
-          <ContainerImage className={'card'}>
-            <PokemonName className={'card-title'}>{props.pokemon.name}</PokemonName>
+      <CardComplete className="card-group">
+        <CardContainer className="card">
+          <ContainerImage className="card">
+            <PokemonName className="card-title">{name}</PokemonName>
             <img
-              src={props.pokemon.sprites.other[`official-artwork`].front_default}
+              src={sprites.other['official-artwork'].front_default}
               className="card-img-top"
-              alt={'hola'}
+              alt={`Imagen de pokemon ${name}`}
             />
-            <ButtonLink key={props.pokemon.id} id={props.pokemon.id} />
+            <ButtonLink key={id} id={pokemon.id} />
           </ContainerImage>
 
           <CardInformation>
             <p className="card-text">
-              ID: <strong>{props.pokemon.id}</strong>
+              ID: <strong>{id}</strong>
             </p>
             <p className="card-text">
-              EXP BASE: <strong>{props.pokemon.base_experience}</strong>
+              EXP BASE: <strong>{baseExperience}</strong>
             </p>
             <p className="card-text">
-              HEIGHT: <strong>{props.pokemon.height}</strong>
+              HEIGHT: <strong>{height}</strong>
             </p>
             <p className="card-text">
-              WEIGHT: <strong>{props.pokemon.weight}</strong>
+              WEIGHT: <strong>{weight}</strong>
             </p>
             <p className="card-text">
-              TYPE: <strong>{props.pokemon.types[0].type.name}</strong>
+              TYPE: <strong>{types[0].type.name}</strong>
             </p>
           </CardInformation>
         </CardContainer>
       </CardComplete>
     </div>
   );
+}
+Card.propTypes = {
+  pokemon: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    sprites: PropTypes.shape({
+      other: PropTypes.shape({
+        'official-artwork': PropTypes.shape({
+          front_default: PropTypes.string.isRequired
+        })
+      })
+    }).isRequired,
+    id: PropTypes.number.isRequired,
+    base_experience: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired,
+    weight: PropTypes.number.isRequired,
+    types: PropTypes.arrayOf(
+      PropTypes.shape({
+        type: PropTypes.shape({
+          name: PropTypes.string.isRequired
+        })
+      })
+    )
+  }).isRequired
 };
 export default Card;

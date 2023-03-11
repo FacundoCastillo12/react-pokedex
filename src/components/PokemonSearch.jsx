@@ -4,9 +4,13 @@ import pokeApi from '../pokeApi';
 import Loading from './Loading';
 import ButtonLink from './ButtonLink';
 
-const PokemonSearch = () => {
+function PokemonSearch() {
   const [searchTerm, setSearchTerm] = useState('');
-  const { data, error, loading } = useFetchTimeoutGetPokemon(pokeApi.getPokemonById, searchTerm, 1000);
+  const { data, error, loading } = useFetchTimeoutGetPokemon(
+    pokeApi.getPokemonById,
+    searchTerm,
+    1000,
+  );
   function handleSubmit(e) {
     e.preventDefault();
   }
@@ -41,21 +45,30 @@ const PokemonSearch = () => {
               <div className="card bg-warning">
                 <h1 className="card-header text-capitalize text-success ">{data.name}</h1>
                 <img
-                  src={data.sprites.other[`official-artwork`].front_default}
+                  src={data.sprites.other['official-artwork'].front_default}
                   className="card-img-top w-25 mx-auto d-block"
                   alt={`Pokemon ${data.name}`}
                 />
                 <div className="card-body">
                   <ul className="list-group list-group-flush ">
-                    <h5 className="card-title text-primary">ID: {data.id}</h5>
+                    <h5 className="card-title text-primary">
+                      ID:
+                      {data.id}
+                    </h5>
                     <li className="list-group-item bg-warning text-dark">
-                      <strong className="text-dark">EXP Base:</strong> {data.base_experience}
+                      <strong className="text-dark">EXP Base:</strong>
+                      {' '}
+                      {data.base_experience}
                     </li>
                     <li className="list-group-item bg-warning text-dark">
-                      <strong className="text-dark">Height:</strong> {data.height}
+                      <strong className="text-dark">Height:</strong>
+                      {' '}
+                      {data.height}
                     </li>
                     <li className="list-group-item bg-warning text-dark">
-                      <strong className="text-dark">Weight: </strong> {data.weight}
+                      <strong className="text-dark">Weight: </strong>
+                      {' '}
+                      {data.weight}
                     </li>
                   </ul>
                   <div className="mt-4">
@@ -74,6 +87,6 @@ const PokemonSearch = () => {
       </div>
     </div>
   );
-};
+}
 
 export default PokemonSearch;

@@ -7,14 +7,15 @@ const FooterContainer = styled.footer`
   text-align: center;
 `;
 
-const Footer = () => {
+function Footer() {
   return (
     <FooterContainer className="mt-3">
       <p>
         Pokedex created in <a href="https://create-react-app.dev/">React</a> using{' '}
-        <a href="https://pokeapi.co/">PokeApi</a> by <a href="https://github.com/FacundoCastillo12">Facundo Castillo</a>{' '}
+        <a href="https://pokeapi.co/">PokeApi</a>
+        by <a href="https://github.com/FacundoCastillo12">Facundo Castillo</a>{' '}
       </p>
     </FooterContainer>
   );
-};
+}
 export default Footer;

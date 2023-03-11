@@ -1,5 +1,6 @@
 import styled from '@emotion/styled/macro';
 import { keyframes } from '@emotion/react';
+
 const Container = styled.div`
   display: flex;
   align-items: center;
@@ -51,11 +52,11 @@ const Pokeball = styled.div`
   }
 `;
 
-const Loading = () => {
+function Loading() {
   return (
     <Container>
       <Pokeball />
     </Container>
   );
-};
+}
 export default Loading;

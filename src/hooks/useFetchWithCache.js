@@ -8,11 +8,26 @@ const fetchReducer = (state, action) => {
 
   switch (type) {
     case 'LOAD':
-      return { ...state, loading: true, data: null, error: null };
+      return {
+        ...state,
+        loading: true,
+        data: null,
+        error: null,
+      };
     case 'SUCCESS':
-      return { ...state, loading: false, data: payload, error: null };
+      return {
+        ...state,
+        loading: false,
+        data: payload,
+        error: null,
+      };
     case 'FAILURE':
-      return { ...state, loading: false, data: null, error: payload };
+      return {
+        ...state,
+        loading: false,
+        data: null,
+        error: payload,
+      };
     default:
       return state;
   }
@@ -85,8 +100,8 @@ export function useFetchGetPokemon(fetchResource, fetchByUrl, param) {
         const resource = await Promise.all(
           pokemonList.results.map(async (results) => {
             const pokemonResponse = await fetchByUrl(results.url);
-            return await pokemonResponse;
-          })
+            return pokemonResponse;
+          }),
         );
         dispatch({ type: 'SUCCESS', payload: resource });
         cache.dispatch({ type: 'SET_CACHE', payload: { key: param, value: resource } });
